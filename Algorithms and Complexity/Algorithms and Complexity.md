@@ -20,25 +20,26 @@ long Compute(int[] arr)
 * Worst case: **O(n²)**
 * Average case **O(n²)**
 * Explanation: There is one outer loop to **n** , and another inner loop which depending on a condition either increments **start** or decrements **end** that is moving **start** or **end** towards the other. Thus it is effectively the same count of repetitions if only **start** was increasing or only **end** was decreasing. 
-* *Side note: The inner loop will always produce the same result because the initial conditions* **start = 0** *and* **end = arr.Length - 1** *are always the same, so* **count** *can be calculated by:*
-    ```C#
-    long Compute(int[] arr)
+
+*Side note: The inner loop will always produce the same result because the initial conditions* **start = 0** *and* **end = arr.Length - 1** *are always the same, so* **count** *can be calculated by:*
+```C#
+long Compute(int[] arr)
+{
+    long count = 0;
+    int start = 0, 
+        end = arr.Length - 1;
+    while (start < end)
     {
-        long count = 0;
-        int start = 0, 
-            end = arr.Length - 1;
-        while (start < end)
-        {
-            if (arr[start] < arr[end])
-                { start++; count++; }
-            else 
-                { end--; }          
-        }
-    
-        return count *= arr.Length;
+        if (arr[start] < arr[end])
+            { start++; count++; }
+        else 
+            { end--; }          
     }
-    ```
-    *reducing worst case scenario to* **O(n)**
+
+    return count *= arr.Length;
+}
+```
+*reducing worst case scenario* to **O(n)**
 ---
 ### 2. What is the expected running time of the following C# code?
 ```C#
