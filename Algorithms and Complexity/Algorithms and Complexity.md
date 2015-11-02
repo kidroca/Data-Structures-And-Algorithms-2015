@@ -1,5 +1,4 @@
 # Data Structures, Algorithms and Complexity Homework
----
 ### 1. What is the expected running time of the following C# code?
 
 ```C#
