@@ -1,6 +1,7 @@
 # Data Structures, Algorithms and Complexity Homework
 ---
 ### 1. What is the expected running time of the following C# code?
+
 ```C#
 long Compute(int[] arr)
 {
@@ -42,6 +43,7 @@ long Compute(int[] arr)
 *reducing worst case scenario* to **O(n)**
 ---
 ### 2. What is the expected running time of the following C# code?
+
 ```C#
 long CalcCount(int[,] matrix)
 {
@@ -61,6 +63,7 @@ long CalcCount(int[,] matrix)
     2. Average case: Because the execution of the nested loop depends on the **condition** that the first element of the current row is **even** in the best posible case that will always be false and the algorithm will run **O(n)** and in the worst case that will always be false resulting in **O(n \* m)**, since the **condition** have only 2 outcomes, the nested loop runs **m / 2** times on average
 ---
 ### 3. (*) What is the expected running time of the following C# code?
+
 ```C#
 long CalcSum(int[,] matrix, int row)
 {
