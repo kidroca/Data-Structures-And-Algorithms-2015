@@ -53,11 +53,11 @@ long CalcCount(int[,] matrix)
     return count;
 }
 ```
-* Worst case: **O(n * m)**
-* Average case: **O(n * m/2)**
+* Worst case: **O(n \* m)**
+* Average case: **O(n \* m/2)**
 * Explanation: 
     1. Worst case: Because there is loop to **n** with a nested loop to **m** 
-    2. Average case: Because the execution of the nested loop depends on the **condition** that the first element of the current row is **even** in the best posible case that will always be false and the algorithm will run **O(n)** and in the worst case that will always be false resulting in **O(n * m)**, since the **condition** have only 2 outcomes, the nested loop runs **m / 2** times on average
+    2. Average case: Because the execution of the nested loop depends on the **condition** that the first element of the current row is **even** in the best posible case that will always be false and the algorithm will run **O(n)** and in the worst case that will always be false resulting in **O(n \* m)**, since the **condition** have only 2 outcomes, the nested loop runs **m / 2** times on average
 ---
 ### 3. (*) What is the expected running time of the following C# code?
 ```C#
@@ -73,6 +73,7 @@ long CalcSum(int[,] matrix, int row)
 
 Console.WriteLine(CalcSum(matrix, 0));
 ```
-* Worst case: **O(n * m)**
-* Average case: **O(n/2 * m)**
-* Explanation: The method **CalcSum** is calculating a sum for all cells in a given matrix row **O(m)** if the row is **not** the last row of the matrix the procedure is recursively repeated for the next row. So the worst case would be starting from the first row **O(n * m)** and the best would be starting from the last row **O(1 * m)** or just **O(m)**, so the average result would be similar to starting from the middle (n / 2) row.
+* Worst case: **O(n \* m)**
+* Average case: **O(n/2 \* m)**
+* Explanation: The method **CalcSum** is calculating a sum for all cells in a given matrix row **O(m)** if the row is **not** the last row of the matrix the procedure is recursively repeated for the next row. So the worst case would be starting from the first row **O(n \* m)** and the best would be starting from the last row **O(1 \* m)** or just **O(m)**, so the average result would be similar to starting from the middle (n / 2) row.
+
