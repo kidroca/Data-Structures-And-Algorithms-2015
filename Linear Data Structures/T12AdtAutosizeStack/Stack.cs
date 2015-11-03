@@ -29,7 +29,10 @@
 
         public int Size
         {
-            get { return this.size; }
+            get
+            {
+                return this.size;
+            }
 
             private set
             {
@@ -60,7 +63,7 @@
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return this.GetEnumerator();
         }
 
         public void StackUp(T element)
@@ -71,11 +74,18 @@
 
         public T PopOut()
         {
-            var element = this.stackStorage[this.size - 1];
-            this.stackStorage[this.size - 1] = default(T);
-            this.Size--;
+            if (this.Size > 0)
+            {
+                var element = this.stackStorage[this.size - 1];
+                this.stackStorage[this.size - 1] = default(T);
+                this.Size--;
 
-            return element;
+                return element;
+            }
+            else
+            {
+                throw new InvalidOperationException("Stack is empty");
+            }
         }
     }
 }

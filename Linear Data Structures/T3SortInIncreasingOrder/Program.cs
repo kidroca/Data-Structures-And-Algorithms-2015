@@ -26,10 +26,11 @@
 
             helper.ConsoleMio.WriteLine(
                 "Result: {0}",
-                ConsoleColor.DarkGreen, String.Join(" ", sequence));
+                ConsoleColor.DarkGreen,
+                string.Join(" ", sequence));
         }
 
-        public static void HeapSort<T>(IList<T> collection, int size)
+        private static void HeapSort<T>(IList<T> collection, int size)
             where T : IComparable
         {
             Heapify(collection, size);
@@ -61,7 +62,7 @@
         {
             while (((start * 2) + 1) <= end)
             {
-                int child = ((start * 2) + 1);
+                int child = (start * 2) + 1;
                 int swap = start;
 
                 if (collection[swap].CompareTo(collection[child]) < 0)

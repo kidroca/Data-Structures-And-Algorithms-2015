@@ -11,9 +11,9 @@
     /// </summary>
     public class Program
     {
-        private static HomeworkHelper helper = new HomeworkHelper();
-
         private const int MAGIC_CONSTANT = 10000;
+
+        private static HomeworkHelper helper = new HomeworkHelper();
 
         private static void Main()
         {
@@ -53,8 +53,9 @@
                         ConsoleColor.DarkBlue,
                         i,
                         myIndexIsOcurrenceCount[i],
-                        myIndexIsOcurrenceCount[i] == 1 ? String.Empty : "s");
+                        myIndexIsOcurrenceCount[i] == 1 ? string.Empty : "s");
                 }
+
                 if (i % 100 == 0)
                 {
                     Console.WriteLine("Press a key to continue printing");
@@ -76,7 +77,7 @@
                     ConsoleColor.DarkBlue,
                     key,
                     occurencesMap[key],
-                    occurencesMap[key] == 1 ? String.Empty : "s");
+                    occurencesMap[key] == 1 ? string.Empty : "s");
 
                 if (i % 10 == 0)
                 {

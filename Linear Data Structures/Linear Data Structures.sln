@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T12AdtAutosizeStack", "T12A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T13AdtDynamicLinkedListQueue", "T13AdtDynamicLinkedListQueue\T13AdtDynamicLinkedListQueue.csproj", "{A825B6FE-AF07-419F-94D6-8454E4EF083C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T14TheLabyrinthOfDoom", "T14TheLabyrinthOfDoom\T14TheLabyrinthOfDoom.csproj", "{996BFD85-499B-4C67-8B0F-A7D05C20F915}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{A825B6FE-AF07-419F-94D6-8454E4EF083C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A825B6FE-AF07-419F-94D6-8454E4EF083C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A825B6FE-AF07-419F-94D6-8454E4EF083C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996BFD85-499B-4C67-8B0F-A7D05C20F915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996BFD85-499B-4C67-8B0F-A7D05C20F915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996BFD85-499B-4C67-8B0F-A7D05C20F915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996BFD85-499B-4C67-8B0F-A7D05C20F915}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

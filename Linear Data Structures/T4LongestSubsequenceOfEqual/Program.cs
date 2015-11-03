@@ -27,7 +27,8 @@
                 Console.Write("Run the test or use user input(Y/N): ");
                 choice = Console.ReadKey(true).Key;
                 Console.WriteLine();
-            } while (choice != ConsoleKey.Y && choice != ConsoleKey.N);
+            }
+            while (choice != ConsoleKey.Y && choice != ConsoleKey.N);
 
             if (choice == ConsoleKey.N)
             {
@@ -41,7 +42,7 @@
                     "Result: {0} repeating element{1} \nCollection: {2}",
                     ConsoleColor.DarkGreen,
                     size,
-                    size == 1 ? "" : "s",
+                    size == 1 ? string.Empty : "s",
                     string.Join(" ", subSequenceOfEqueal));
             }
             else
@@ -67,10 +68,10 @@
 
             List<int> result = methodThatGetsTheThings(theList);
 
-            Debug.Assert(result.Count == 3);
+            Debug.Assert(result.Count == 3, "Asserting that method extracts correct elements count");
             foreach (int number in result)
             {
-                Debug.Assert(number == 4);
+                Debug.Assert(number == 4, "Assertion that the method extract the correct element");
             }
 
             return true;

@@ -33,6 +33,7 @@
             get
             {
                 int count = 0;
+
                 // Since elements can be linked to the list outside this class - count must be recallculated 
                 // each time 
                 foreach (T element in this)

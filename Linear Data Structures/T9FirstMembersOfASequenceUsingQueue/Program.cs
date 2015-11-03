@@ -47,7 +47,7 @@
             {
                 int baseNumber = thisIsJavaScript.GetNextInLine();
                 int x = baseNumber + 1;
-                int y = baseNumber * 2 + 1;
+                int y = (baseNumber * 2) + 1;
                 int z = baseNumber + 2;
 
                 thisIsJavaScript.Enqueue(x);

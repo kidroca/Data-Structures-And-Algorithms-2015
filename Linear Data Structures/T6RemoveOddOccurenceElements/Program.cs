@@ -12,6 +12,24 @@
     {
         private static HomeworkHelper helper = new HomeworkHelper();
 
+        public static Dictionary<T, int> MapByElementOccurence<T>(IEnumerable<T> collection)
+            where T : IEquatable<T>
+        {
+            Dictionary<T, int> result = new Dictionary<T, int>();
+
+            foreach (T element in collection)
+            {
+                if (!result.ContainsKey(element))
+                {
+                    result[element] = 0;
+                }
+
+                result[element]++;
+            }
+
+            return result;
+        }
+
         private static void Main()
         {
             helper.ConsoleMio.Setup();
@@ -34,24 +52,6 @@
 
             helper.ConsoleMio.WriteLine(
                 "Result: {0}", ConsoleColor.DarkGreen, string.Join(" ", filteredCollection));
-        }
-
-        public static Dictionary<T, int> MapByElementOccurence<T>(IEnumerable<T> collection)
-            where T : IEquatable<T>
-        {
-            Dictionary<T, int> result = new Dictionary<T, int>();
-
-            foreach (T element in collection)
-            {
-                if (!result.ContainsKey(element))
-                {
-                    result[element] = 0;
-                }
-
-                result[element]++;
-            }
-
-            return result;
         }
     }
 }

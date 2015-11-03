@@ -33,7 +33,7 @@
             helper.ConsoleMio.WriteLine(
                 "Result: {0}",
                 ConsoleColor.DarkGreen,
-                String.Join(" ", reversed));
+                string.Join(" ", reversed));
         }
     }
 }

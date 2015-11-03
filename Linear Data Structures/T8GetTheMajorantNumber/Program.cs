@@ -43,7 +43,7 @@
             try
             {
                 majorant = groups
-                .First(x => x.Count() >= collection.Length / 2 + 1)
+                .First(x => x.Count() >= (collection.Length / 2) + 1)
                 .Key;
 
                 return true;

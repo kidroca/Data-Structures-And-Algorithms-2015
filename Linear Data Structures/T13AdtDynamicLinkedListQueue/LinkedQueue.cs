@@ -78,7 +78,7 @@
         public IEnumerator<T> GetEnumerator()
         {
             var nextItem = this.next;
-            while (next != null)
+            while (this.next != null)
             {
                 yield return nextItem.Value;
                 nextItem = nextItem.NextItem;
@@ -87,7 +87,7 @@
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return this.GetEnumerator();
         }
     }
 }
