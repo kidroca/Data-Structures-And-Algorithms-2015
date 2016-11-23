@@ -4,22 +4,23 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
-    using HomeworkHelpers;
+    using ConsoleMio;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// Write a method that finds the longest subsequence of equal numbers in given List and returns the 
-    /// result as new List<int>.
+    /// result as new List{int}.
     ///     Write a program to test whether the method works correctly.
     /// </summary>
     public class Program
     {
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly HomeworkHelper Helper = new HomeworkHelper();
 
         private static void Main()
         {
-            helper.ConsoleMio.Setup();
+            Helper.ConsoleMio.Setup();
 
-            helper.ConsoleMio.PrintHeading("Task 4 Longest Subsequence of Equal Elements");
+            Helper.ConsoleMio.PrintHeading("Task 4 Longest Subsequence of Equal Elements");
 
             ConsoleKey choice;
             do
@@ -32,26 +33,26 @@
 
             if (choice == ConsoleKey.N)
             {
-                List<int> sequence = helper.ReadCollection(0, null).ToList();
+                List<int> sequence = Helper.ReadCollection(0, null).ToList();
 
                 List<int> subSequenceOfEqueal = GetLongestSubsequenceOfEqualElements(sequence);
 
                 int size = subSequenceOfEqueal.Count;
 
-                helper.ConsoleMio.WriteLine(
-                    "Result: {0} repeating element{1} \nCollection: {2}",
-                    ConsoleColor.DarkGreen,
-                    size,
-                    size == 1 ? string.Empty : "s",
-                    string.Join(" ", subSequenceOfEqueal));
+                var collectionAsString = string.Join(" ", subSequenceOfEqueal);
+                var pluralForm = size == 1 ? string.Empty : "s";
+
+                Helper.ConsoleMio.WriteLine(
+                    $"Result: {size} repeating element{pluralForm} \nCollection: {collectionAsString}",
+                    DarkGreen);
             }
             else
             {
                 bool result = TestTheThing(GetLongestSubsequenceOfEqualElements);
                 if (result)
                 {
-                    helper.ConsoleMio.WriteLine(
-                        "Test is successfull! What did you expected...", ConsoleColor.Green);
+                    Helper.ConsoleMio.WriteLine(
+                        "Test is successfull! What did you expected...", Green);
                 }
             }
         }

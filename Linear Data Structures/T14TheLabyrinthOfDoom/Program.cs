@@ -1,8 +1,9 @@
 ﻿namespace T14TheLabyrinthOfDoom
 {
     using System;
-    using HomeworkHelpers;
+    using ConsoleMio.ConsoleEnhancements;
     using T13AdtDynamicLinkedListQueue;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// We are given a labyrinth of size N x N.
@@ -16,37 +17,37 @@
     {
         private static LinkedQueue<MatrixPosition> unexploredPositions;
 
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly ConsoleMio ConsoleMio = new ConsoleMio();
 
         private static string[,] maze;
 
         private static void Main(string[] args)
         {
-            helper.ConsoleMio.Setup();
+            ConsoleMio.Setup();
 
             while ((maze = TestMazeFactory.GetNext()) != null)
             {
-                helper.ConsoleMio.PrintHeading("Task 14 Minimal Distances In The Labytinth Of Doom");
+                ConsoleMio.PrintHeading("Task 14 Minimal Distances In The Labyrinth Of Doom");
 
-                helper.ConsoleMio.WriteLine("Labyrinth Before: ", ConsoleColor.DarkCyan);
+                ConsoleMio.WriteLine("Labyrinth Before: ", DarkCyan);
                 PrintLabyrinth(maze);
-                Console.WriteLine();
+                ConsoleMio.WriteLine();
 
                 unexploredPositions = new LinkedQueue<MatrixPosition>();
                 DoNextLabyrinth();
 
-                helper.ConsoleMio.WriteLine("Labyrinth After: ", ConsoleColor.DarkGreen);
+                ConsoleMio.WriteLine("Labyrinth After: ", DarkGreen);
                 PrintLabyrinth(maze);
-                Console.WriteLine();
+                ConsoleMio.WriteLine();
 
-                helper.ConsoleMio.WriteLine("Press a key to test the next labyrinth...", ConsoleColor.DarkRed);
+                ConsoleMio.WriteLine("Press a key to test the next labyrinth...", DarkRed);
                 Console.ReadKey(true);
                 Console.Clear();
             }
 
-            helper.ConsoleMio.WriteLine(
+            ConsoleMio.WriteLine(
                 "Completed!!! Thank you very much for looking all the tasks!",
-                ConsoleColor.DarkGreen);
+                DarkGreen);
         }
 
         private static void DoNextLabyrinth()
@@ -65,10 +66,10 @@
 
             ExploreMaze(unexploredPositions.GetNextInLine());
 
-            MarkUnreachedPlaeces(maze, "0", "u");
+            MarkUnreachedPlaces(maze, "0", "u");
         }
 
-        private static void MarkUnreachedPlaeces(string[,] maze, string unreachedPlaceToken, string markToken)
+        private static void MarkUnreachedPlaces(string[,] maze, string unreachedPlaceToken, string markToken)
         {
             for (int i = 0; i < maze.GetLength(0); i++)
             {
@@ -84,8 +85,6 @@
 
         private static void PrintLabyrinth(string[,] maze)
         {
-            int parseResult;
-
             for (int i = 0; i < maze.GetLength(0); i++)
             {
                 for (int j = 0; j < maze.GetLength(1); j++)
@@ -94,20 +93,24 @@
 
                     if (current.Equals("x", StringComparison.OrdinalIgnoreCase))
                     {
-                        helper.ConsoleMio.Write("x ", ConsoleColor.Red);
-                    }
-                    else if (!current.Equals("0") &&
-                             int.TryParse(current, out parseResult))
-                    {
-                        helper.ConsoleMio.Write("{0} ", ConsoleColor.Green, current);
+                        ConsoleMio.Write("x ", Red);
                     }
                     else
                     {
-                        Console.Write("{0} ", current);
+                        int parseResult;
+                        if (!current.Equals("0") &&
+                            int.TryParse(current, out parseResult))
+                        {
+                            ConsoleMio.Write($"{current} ", Green);
+                        }
+                        else
+                        {
+                            ConsoleMio.Write($"{current} ", Black);
+                        }
                     }
                 }
 
-                Console.WriteLine();
+                ConsoleMio.WriteLine();
             }
         }
 

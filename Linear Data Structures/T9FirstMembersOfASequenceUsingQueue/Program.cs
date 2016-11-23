@@ -1,9 +1,9 @@
 ﻿namespace T9FirstMembersOfASequenceUsingQueue
 {
-    using System;
     using System.Collections.Generic;
-    using HomeworkHelpers;
+    using ConsoleMio;
     using T13AdtDynamicLinkedListQueue;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// We are given the following sequence:
@@ -14,27 +14,28 @@
     ///     S5 = S2 + 1;
     ///     S6 = 2* S2 + 1;
     ///     S7 = S2 + 2;
-    /// Using the Queue<T> class write a program to print its first 50 members for given N.
+    /// Using the Queue{T} class write a program to print its first 50 members for given N.
     ///     N=2 → 2, 3, 5, 4, 4, 7, 5, 6, 11, 7, 5, 9, 6, ...
     /// </summary>
     public class Program
     {
         private const int SEQUENCE_LENGTH = 50;
 
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly HomeworkHelper Helper = new HomeworkHelper();
 
         private static void Main()
         {
-            helper.ConsoleMio.Setup();
+            Helper.ConsoleMio.Setup();
 
-            helper.ConsoleMio.PrintHeading("Task 9 The 50 Members Of The Night's Watch");
+            Helper.ConsoleMio.PrintHeading("Task 9 The 50 Members Of The Night's Watch");
 
-            Console.Write("Night gathers, and now my watch begins. Give me a number ");
-            helper.ConsoleMio.Write("N", ConsoleColor.Red);
-            Console.Write(", for this\n" +
-                "night and all the nights to come: ");
+            Helper.ConsoleMio
+                .Write("Night gathers, and now my watch begins. Give me a number ", Black)
+                .Write("N", Red)
+                .Write(", for this\n" +
+                    "night and all the nights to come: ", Black);
 
-            int n = int.Parse(helper.ConsoleMio.ReadInColor(ConsoleColor.Red));
+            int n = int.Parse(Helper.ConsoleMio.ReadLine(Red));
 
             // Using the queue from Task 13
             LinkedQueue<int> thisIsJavaScript = new LinkedQueue<int>();
@@ -60,8 +61,8 @@
                 result.Add(z);
             }
 
-            helper.ConsoleMio.WriteLine(
-                "Result: {0}", ConsoleColor.DarkGreen, string.Join(" ", result));
+            Helper.ConsoleMio.WriteLine(
+                $"Result: {string.Join(" ", result)}", DarkGreen);
         }
     }
 }
