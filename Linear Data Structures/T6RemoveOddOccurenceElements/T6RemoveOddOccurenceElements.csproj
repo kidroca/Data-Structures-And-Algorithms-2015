@@ -7,7 +7,7 @@
     <ProjectGuid>{66BCB41A-B910-41B0-95F4-357C1DE5582E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>T6RemoveOddOccurenceElements</RootNamespace>
+    <RootNamespace>T6RemoveOddOccurrenceElements</RootNamespace>
     <AssemblyName>T6RemoveOddOccurenceElements</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Helpers">
-      <HintPath>..\Helpers\Helpers.dll</HintPath>
+    <Reference Include="ConsoleMio, Version=1.0.6021.35514, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ConsoleMio.1.0.6021.35514\lib\net40\ConsoleMio.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

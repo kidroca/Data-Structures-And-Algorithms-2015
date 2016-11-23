@@ -1,9 +1,10 @@
-﻿namespace T7HowManyOccurencesForEach
+﻿namespace T7HowManyOccurrencesForEach
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using HomeworkHelpers;
+    using ConsoleMio;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// Write a program that finds in given array of integers (all belonging to the range [0..1000]) 
@@ -13,17 +14,17 @@
     {
         private const int MAGIC_CONSTANT = 10000;
 
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly HomeworkHelper Helper = new HomeworkHelper();
 
         private static void Main()
         {
-            helper.ConsoleMio.Setup();
+            Helper.ConsoleMio.Setup();
 
-            helper.ConsoleMio.PrintHeading("Task 7 Count Number Occurences");
+            Helper.ConsoleMio.PrintHeading("Task 7 Count Number Occurrences");
 
-            int[] collection = helper.GetCollectionFromUserChoice(0, 10000, 0, 1000).ToArray();
+            int[] collection = Helper.GetCollectionFromUserChoice(0, 10000, 0, 1000).ToArray();
 
-            helper.ConsoleMio.WriteLine("Results: ", ConsoleColor.DarkGreen);
+            Helper.ConsoleMio.WriteLine("Results: ", DarkGreen);
             if (collection.Length < MAGIC_CONSTANT)
             {
                 SmallCollectionHandler(collection);
@@ -38,22 +39,21 @@
 
         private static void LargeCollectionHandler(int[] collection)
         {
-            int[] myIndexIsOcurrenceCount = new int[1001];
+            int[] myIndexIsOccurrenceCount = new int[1001];
             foreach (int number in collection)
             {
-                myIndexIsOcurrenceCount[number]++;
+                myIndexIsOccurrenceCount[number]++;
             }
 
-            for (int i = 1; i < myIndexIsOcurrenceCount.Length; i++)
+            for (int i = 1; i < myIndexIsOccurrenceCount.Length; i++)
             {
-                if (myIndexIsOcurrenceCount[i] > 0)
+                if (myIndexIsOccurrenceCount[i] > 0)
                 {
-                    helper.ConsoleMio.WriteLine(
-                        "{0} → {1} time{2}",
-                        ConsoleColor.DarkBlue,
-                        i,
-                        myIndexIsOcurrenceCount[i],
-                        myIndexIsOcurrenceCount[i] == 1 ? string.Empty : "s");
+                    var pluralForm = myIndexIsOccurrenceCount[i] == 1 ? string.Empty : "s";
+
+                    Helper.ConsoleMio.WriteLine(
+                        $"{i} → {myIndexIsOccurrenceCount[i]} time{pluralForm}",
+                        DarkBlue);
                 }
 
                 if (i % 100 == 0)
@@ -66,18 +66,17 @@
 
         private static void SmallCollectionHandler(int[] collection)
         {
-            Dictionary<int, int> occurencesMap =
-                T6RemoveOddOccurenceElements.Program.MapByElementOccurence(collection);
+            Dictionary<int, int> occurrencesMap =
+                T6RemoveOddOccurrenceElements.Program.MapByElementOccurrence(collection);
 
             int i = 1;
-            foreach (int key in occurencesMap.Keys)
+            foreach (int key in occurrencesMap.Keys)
             {
-                helper.ConsoleMio.WriteLine(
-                    "{0} → {1} time{2}",
-                    ConsoleColor.DarkBlue,
-                    key,
-                    occurencesMap[key],
-                    occurencesMap[key] == 1 ? string.Empty : "s");
+                var pluralForm = occurrencesMap[key] == 1 ? string.Empty : "s";
+
+                Helper.ConsoleMio.WriteLine(
+                    $"{key} → {occurrencesMap[key]} time{pluralForm}",
+                    DarkBlue);
 
                 if (i % 10 == 0)
                 {

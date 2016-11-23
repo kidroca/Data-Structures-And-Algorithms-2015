@@ -3,31 +3,31 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using HomeworkHelpers;
+    using ConsoleMio;
+    using static System.ConsoleColor;
 
     /// <summary>
-    /// Write a program that reads a sequence of integers (List<int>) ending with an empty line and sorts 
+    /// Write a program that reads a sequence of integers (List{int}) ending with an empty line and sorts 
     /// them in an increasing order.
     /// </summary>
     public class Program
     {
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly HomeworkHelper Helper = new HomeworkHelper();
 
         private static void Main()
         {
-            helper.ConsoleMio.Setup();
+            Helper.ConsoleMio.Setup();
 
-            helper.ConsoleMio.PrintHeading("Task 3 Sort a Sequence in Increasing Order");
+            Helper.ConsoleMio.PrintHeading("Task 3 Sort a Sequence in Increasing Order");
 
-            List<int> sequence = helper.ReadCollection(0, new[] { ' ' }).ToList();
+            List<int> sequence = Helper.ReadCollection(0, new[] { ' ' }).ToList();
 
-            helper.ConsoleMio.WriteLine("Sorting with heapsort...", ConsoleColor.DarkBlue);
+            Helper.ConsoleMio.WriteLine("Sorting with heapsort...", DarkBlue);
             HeapSort(sequence, sequence.Count);
 
-            helper.ConsoleMio.WriteLine(
-                "Result: {0}",
-                ConsoleColor.DarkGreen,
-                string.Join(" ", sequence));
+            Helper.ConsoleMio.WriteLine(
+                $"Result: {string.Join(" ", sequence)}",
+                DarkGreen);
         }
 
         private static void HeapSort<T>(IList<T> collection, int size)

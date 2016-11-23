@@ -1,8 +1,8 @@
 ﻿namespace T10ShortestSequenceOfOperations
 {
-    using System;
-    using HomeworkHelpers;
+    using ConsoleMio.ConsoleEnhancements;
     using T12AdtAutosizeStack;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// We are given numbers N and M and the following operations:
@@ -19,19 +19,19 @@
     /// </summary>
     public class Program
     {
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly ConsoleMio Mio = new ConsoleMio();
 
         private static void Main(string[] args)
         {
-            helper.ConsoleMio.Setup();
+            Mio.Setup();
 
-            helper.ConsoleMio.PrintHeading("Task 10 Shortest Sequence Of Operations From N to M");
+            Mio.PrintHeading("Task 10 Shortest Sequence Of Operations From N to M");
 
-            Console.Write("Enter number N = ");
-            int n = int.Parse(Console.ReadLine());
+            Mio.Write("Enter number N = ", Black);
+            int n = int.Parse(Mio.ReadLine(Red));
 
-            Console.Write("Enter number M = ");
-            int m = int.Parse(Console.ReadLine());
+            Mio.Write("Enter number M = ", Black);
+            int m = int.Parse(Mio.ReadLine(Red));
 
             // Using the stack from Task 12
             Stack<int> steps = new Stack<int>();
@@ -57,8 +57,9 @@
                 }
             }
 
-            helper.ConsoleMio.Write("Result: ", ConsoleColor.DarkGreen);
-            helper.ConsoleMio.WriteLine(string.Join(" → ", steps), ConsoleColor.DarkBlue);
+            Mio
+                .Write("Result: ", DarkGreen)
+                .WriteLine(string.Join(" → ", steps), DarkBlue);
         }
     }
 }

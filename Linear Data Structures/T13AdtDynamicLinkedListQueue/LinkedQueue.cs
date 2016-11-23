@@ -7,7 +7,7 @@
 
     /// <summary>
     /// Implement the ADT queue as dynamic linked list.
-    /// Use generics (LinkedQueue<T>) to allow storing different data types in the queue.
+    /// Use generics (LinkedQueue{T}) to allow storing different data types in the queue.
     /// </summary>
     public class LinkedQueue<T> : IEnumerable<T>
     {
@@ -29,6 +29,10 @@
         {
             if (this.next == null)
             {
+                // I'm sorry
+                // - no factory
+                // - no abstraction/interface
+                // - nodejs me likes also
                 this.next = new ListItem<T>(element);
             }
             else

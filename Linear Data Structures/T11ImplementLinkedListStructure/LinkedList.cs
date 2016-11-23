@@ -1,5 +1,6 @@
 ﻿namespace T11ImplementLinkedListStructure
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
 
@@ -34,7 +35,7 @@
             {
                 int count = 0;
 
-                // Since elements can be linked to the list outside this class - count must be recallculated 
+                // Since elements can be linked to the list outside this class - count must be recalculated 
                 // each time 
                 foreach (T element in this)
                 {
@@ -45,10 +46,7 @@
             }
         }
 
-        public bool IsReadOnly
-        {
-            get { return false; }
-        }
+        public bool IsReadOnly => false;
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -93,7 +91,7 @@
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new System.NotImplementedException();
+            throw new InvalidOperationException("Method is not supported");
         }
 
         public bool Remove(T item)

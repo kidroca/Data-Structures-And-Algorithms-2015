@@ -1,24 +1,24 @@
 ﻿namespace T5PositiveOpinion
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using HomeworkHelpers;
+    using ConsoleMio;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// Write a program that removes from given sequence all negative numbers.
     /// </summary>
     public class Program
     {
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly HomeworkHelper Helper = new HomeworkHelper();
 
         private static void Main()
         {
-            helper.ConsoleMio.Setup();
+            Helper.ConsoleMio.Setup();
 
-            helper.ConsoleMio.PrintHeading("Task 5 Remove All Negative Numbers From a Sequence");
+            Helper.ConsoleMio.PrintHeading("Task 5 Remove All Negative Numbers From a Sequence");
 
-            List<int> collection = helper.ReadCollection(0, null).ToList();
+            List<int> collection = Helper.ReadCollection(0, null).ToList();
 
             List<int> positiveCollection = new List<int>(collection.Count);
 
@@ -30,8 +30,8 @@
                 }
             }
 
-            helper.ConsoleMio.WriteLine(
-                "Result: {0}", ConsoleColor.DarkGreen, string.Join(" ", positiveCollection));
+            Helper.ConsoleMio.WriteLine(
+                $"Result: {string.Join(" ", positiveCollection)}", DarkGreen);
         }
     }
 }

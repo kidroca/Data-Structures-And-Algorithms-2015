@@ -4,7 +4,7 @@
 
     public static class TestMazeFactory
     {
-        private static List<string[,]> labyrinths = new List<string[,]>()
+        private static readonly List<string[,]> Labyrinths = new List<string[,]>()
         {
             new[,]
             {
@@ -61,7 +61,7 @@
                 { "0", "x", "0", "x", "0", "x" },
                 { "0", "*", "x", "0", "x", "0" },
                 { "0", "x", "0", "0", "0", "0" },
-                { "0", "0", "0", "x", "x", "x" },
+                { "0", "0", "0", "x", "x", "0" },
                 { "0", "0", "0", "x", "0", "x" }
             }
         };
@@ -72,9 +72,9 @@
         {
             string[,] result;
 
-            if (next < labyrinths.Count)
+            if (next < Labyrinths.Count)
             {
-                result = (string[,])labyrinths[next].Clone();
+                result = (string[,])Labyrinths[next].Clone();
                 next++;
             }
             else

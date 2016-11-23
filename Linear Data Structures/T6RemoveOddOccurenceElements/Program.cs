@@ -1,8 +1,9 @@
-﻿namespace T6RemoveOddOccurenceElements
+﻿namespace T6RemoveOddOccurrenceElements
 {
     using System;
     using System.Collections.Generic;
-    using HomeworkHelpers;
+    using ConsoleMio;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// Write a program that removes from given sequence all numbers that occur odd number of times.
@@ -10,9 +11,9 @@
     /// </summary>
     public class Program
     {
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly HomeworkHelper Helper = new HomeworkHelper();
 
-        public static Dictionary<T, int> MapByElementOccurence<T>(IEnumerable<T> collection)
+        public static Dictionary<T, int> MapByElementOccurrence<T>(IEnumerable<T> collection)
             where T : IEquatable<T>
         {
             Dictionary<T, int> result = new Dictionary<T, int>();
@@ -32,26 +33,26 @@
 
         private static void Main()
         {
-            helper.ConsoleMio.Setup();
+            Helper.ConsoleMio.Setup();
 
-            helper.ConsoleMio.PrintHeading("Task 6 Remove Elements That Occur Odd Number Of Times ");
+            Helper.ConsoleMio.PrintHeading("Task 6 Remove Elements That Occur Odd Number Of Times ");
 
-            ICollection<int> collection = helper.ReadCollection(0, new[] { ' ', ',' });
+            ICollection<int> collection = Helper.ReadCollection(0, new[] { ' ', ',' });
 
-            Dictionary<int, int> occurencesMap = MapByElementOccurence(collection);
+            Dictionary<int, int> occurrencesMap = MapByElementOccurrence(collection);
 
             var filteredCollection = new List<int>();
 
             foreach (int number in collection)
             {
-                if (occurencesMap[number] % 2 == 0)
+                if (occurrencesMap[number] % 2 == 0)
                 {
                     filteredCollection.Add(number);
                 }
             }
 
-            helper.ConsoleMio.WriteLine(
-                "Result: {0}", ConsoleColor.DarkGreen, string.Join(" ", filteredCollection));
+            Helper.ConsoleMio.WriteLine(
+                $"Result: {string.Join(" ", filteredCollection)}", DarkGreen);
         }
     }
 }

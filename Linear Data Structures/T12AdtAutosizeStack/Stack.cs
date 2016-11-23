@@ -48,10 +48,7 @@
             }
         }
 
-        public int Capacity
-        {
-            get { return this.stackStorage.Length; }
-        }
+        public int Capacity => this.stackStorage.Length;
 
         public IEnumerator<T> GetEnumerator()
         {

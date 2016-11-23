@@ -2,7 +2,8 @@
 {
     using System;
     using System.Linq;
-    using HomeworkHelpers;
+    using ConsoleMio;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// The majorant of an array of size N is a value that occurs in it at least N/2 + 1 times.
@@ -11,27 +12,28 @@
     /// </summary>
     public class Program
     {
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly HomeworkHelper Helper = new HomeworkHelper();
 
         private static void Main()
         {
-            helper.ConsoleMio.Setup();
+            Helper.ConsoleMio.Setup();
 
-            helper.ConsoleMio.PrintHeading("Task 8 Find The Majorant In A Collection");
+            Helper.ConsoleMio.PrintHeading("Task 8 Find The Majorant In A Collection");
 
-            int[] collection = helper.GetCollectionFromUserChoice(0, 100, 5, 7).ToArray();
+            int[] collection = Helper.GetCollectionFromUserChoice(0, 100, 5, 7).ToArray();
 
-            helper.ConsoleMio.WriteLine("Working with: ", ConsoleColor.DarkBlue);
-            Console.WriteLine(string.Join(" ", collection));
+            Helper.ConsoleMio
+                .WriteLine("Working with: ", DarkBlue)
+                .WriteLine(string.Join(" ", collection), Black);
 
             int majorant;
             if (GetMajorant(collection, out majorant))
             {
-                helper.ConsoleMio.WriteLine("The Majorant is: {0}", ConsoleColor.DarkGreen, majorant);
+                Helper.ConsoleMio.WriteLine($"The Majorant is: {majorant}", DarkGreen);
             }
             else
             {
-                helper.ConsoleMio.WriteLine("The collection doesn't have a majorant", ConsoleColor.DarkRed);
+                Helper.ConsoleMio.WriteLine("The collection doesn't have a majorant", DarkRed);
             }
         }
 
