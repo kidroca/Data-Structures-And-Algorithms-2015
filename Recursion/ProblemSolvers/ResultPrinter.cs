@@ -2,8 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-
-    using HomeworkHelpers.ConsoleEnchantments;
+    using ConsoleMio.ConsoleEnhancements.Contracts;
 
     public class ResultPrinter
     {
@@ -16,9 +15,10 @@
 
         public void DispalyResults<T>(T[] collection, int combinationSetsLength, CombinatoricsGen<T> combo)
         {
-            this.consoleMio.Write("Working with: ", ConsoleColor.DarkMagenta)
-                .WriteLine("{0};", ConsoleColor.DarkGreen, string.Join(" ", collection))
-                .WriteLine("And variations between {0} elements", ConsoleColor.DarkMagenta, combinationSetsLength);
+            this.consoleMio
+                .Write("Working with: ", ConsoleColor.DarkMagenta)
+                .WriteLine($"{string.Join(" ", collection)};", ConsoleColor.DarkGreen)
+                .WriteLine($"And variations between {combinationSetsLength} elements", ConsoleColor.DarkMagenta);
 
             IList<IList<T>> items = combo.Result;
 

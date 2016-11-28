@@ -1,6 +1,6 @@
 ﻿namespace SubsetsofKStrings
 {
-    using HomeworkHelpers;
+    using ConsoleMio;
     using ProblemSolvers;
 
     /// <summary>
@@ -8,15 +8,15 @@
     /// </summary>
     public class Program
     {
-        private static readonly HomeworkHelper Helper = new HomeworkHelper();
+        private static readonly HomeworkHelper Console = new HomeworkHelper();
 
         private static void Main()
         {
-            Helper.ConsoleMio.Setup();
+            Console.ConsoleMio.Setup();
 
-            Helper.ConsoleMio.PrintHeading("Task 6 All Subsets of K Strings");
+            Console.ConsoleMio.PrintHeading("Task 6 All Subsets of K Strings");
 
-            var printr = new ResultPrinter(Helper.ConsoleMio);
+            var printr = new ResultPrinter(Console.ConsoleMio);
 
             string[] collection = { "test", "rock", "fun" };
 

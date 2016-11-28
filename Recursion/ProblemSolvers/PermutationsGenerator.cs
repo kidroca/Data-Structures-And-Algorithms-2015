@@ -4,7 +4,7 @@
 
     public class PermutationsGenerator<T> : CombinatoricsGen<T>
     {
-        private bool[] mask;
+        private readonly bool[] mask;
 
         public PermutationsGenerator(int subsetSize, IList<T> collection) : base(subsetSize, collection)
         {

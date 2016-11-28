@@ -1,4 +1,4 @@
-﻿namespace T14TheLabyrinthOfDoom
+﻿namespace LabyrinthOfDoom
 {
     using System.Collections.Generic;
 

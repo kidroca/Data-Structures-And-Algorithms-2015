@@ -1,6 +1,6 @@
 ﻿namespace PermutationsGeneration
 {
-    using HomeworkHelpers;
+    using ConsoleMio.ConsoleEnhancements;
     using ProblemSolvers;
 
     /// <summary>
@@ -9,15 +9,15 @@
     /// </summary>
     public class Program
     {
-        private static readonly HomeworkHelper Helper = new HomeworkHelper();
+        private static readonly ConsoleMio Console = new ConsoleMio();
 
         private static void Main()
         {
-            Helper.ConsoleMio.Setup();
+            Console.Setup();
 
-            Helper.ConsoleMio.PrintHeading("Task 4 Permutations of numbers");
+            Console.PrintHeading("Task 4 Permutations of numbers");
 
-            ResultPrinter printer = new ResultPrinter(Helper.ConsoleMio);
+            ResultPrinter printer = new ResultPrinter(Console);
 
             int[] collection = { 1, 2, 3, 4 };
 

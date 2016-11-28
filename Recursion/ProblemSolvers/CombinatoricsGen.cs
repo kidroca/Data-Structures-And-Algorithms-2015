@@ -38,10 +38,7 @@ namespace ProblemSolvers
             }
         }
 
-        protected int CurrentCount
-        {
-            get { return this.workList.Count; }
-        }
+        protected int CurrentCount => this.workList.Count;
 
         protected abstract void Generate(int index);
     }

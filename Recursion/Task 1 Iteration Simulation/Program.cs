@@ -1,64 +1,44 @@
 ﻿namespace IterationSimulation
 {
-    using System;
-    using System.Collections.Generic;
-    using HomeworkHelpers;
+    using System.Linq;
+    using ConsoleMio.ConsoleEnhancements;
+    using static System.ConsoleColor;
 
     /// <summary>
     /// Write a recursive program that simulates the execution of n nested loopsfrom 1 to n.
     /// </summary>
     public class Program
     {
-        private static readonly HomeworkHelper Helper = new HomeworkHelper();
-
-        private static readonly Queue<ConsoleColor> TheColorsOfRecursion = new Queue<ConsoleColor>();
+        private static readonly ConsoleMio Console = new ConsoleMio();
+        private static int n;
+        private static int[] collection;
 
         private static void Main()
         {
-            Helper.ConsoleMio.Setup();
+            Console.Setup();
 
-            Helper.ConsoleMio.PrintHeading("Task 1 Iteration Simulation ");
+            Console.PrintHeading("Task 1 Iteration Simulation ");
 
-            TheColorsOfRecursion.Enqueue(ConsoleColor.DarkGreen);
-            TheColorsOfRecursion.Enqueue(ConsoleColor.DarkBlue);
-            TheColorsOfRecursion.Enqueue(ConsoleColor.DarkRed);
-            TheColorsOfRecursion.Enqueue(ConsoleColor.DarkMagenta);
+            Console.Write("Enter n: ", DarkCyan);
+            n = int.Parse(Console.ReadLine(Gray));
+            collection = new int[n];
 
-            int n = int.Parse(Helper.ConsoleMio.Write("Enter n: ", ConsoleColor.DarkCyan)
-                    .ReadInColor(ConsoleColor.Gray));
-
-            SimulateItreation(1, n, 1, new Queue<int>());
+            var iterator = new RecursionIterator(n);
+            iterator.Iterate(IterationAction);
         }
 
-        private static void Nestify(int from, int to, int depth, Queue<int> currentCombo)
+        private static void IterationAction(int i)
         {
-            if (depth > to)
+            if (RecursionIterator.IteratorsInstances.Count < n)
             {
-                ConsoleColor currentColor = TheColorsOfRecursion.Dequeue();
-                TheColorsOfRecursion.Enqueue(currentColor);
-
-                Helper.ConsoleMio
-                    .WriteLine(string.Join(" ", currentCombo), currentColor);
-                return;
+                var nestedIterator = new RecursionIterator(n);
+                nestedIterator.Iterate(IterationAction);
             }
-
-            SimulateItreation(from, to, depth, currentCombo);
-        }
-
-        private static void SimulateItreation(int from, int to, int depth, Queue<int> currentCombo)
-        {
-            if (from > to)
+            else
             {
-                return;
+                Console.WriteLine(string.Join(
+                    "", RecursionIterator.IteratorsInstances.Select(r => r.CurrentPosition)), DarkMagenta);
             }
-
-            currentCombo.Enqueue(from);
-
-            Nestify(from, to, depth + 1, currentCombo);
-
-            currentCombo.Dequeue();
-
-            SimulateItreation(from + 1, to, depth, currentCombo);
         }
     }
 }

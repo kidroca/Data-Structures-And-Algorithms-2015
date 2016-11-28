@@ -1,8 +1,9 @@
-﻿namespace T14TheLabyrinthOfDoom
+﻿namespace LabyrinthOfDoom
 {
     using System;
     using System.Collections.Generic;
-    using HomeworkHelpers;
+    using ConsoleMio.ConsoleEnhancements;
+    using T14TheLabyrinthOfDoom;
 
     /// <summary>
     /// We are given a matrix of passable and non-passable cells.
@@ -20,35 +21,35 @@
     {
         private static Queue<MatrixPosition> unexploredPositions;
 
-        private static HomeworkHelper helper = new HomeworkHelper();
+        private static readonly ConsoleMio Helper = new ConsoleMio();
 
         private static string[,] maze;
 
         private static void Main(string[] args)
         {
-            helper.ConsoleMio.Setup();
+            Helper.Setup();
 
             while ((maze = TestMazeFactory.GetNext()) != null)
             {
-                helper.ConsoleMio.PrintHeading("Minimal Distances In The Labytinth Of Doom");
+                Helper.PrintHeading("Minimal Distances In The Labytinth Of Doom");
 
-                helper.ConsoleMio.WriteLine("Labyrinth Before: ", ConsoleColor.DarkCyan);
+                Helper.WriteLine("Labyrinth Before: ", ConsoleColor.DarkCyan);
                 PrintLabyrinth(maze);
                 Console.WriteLine();
 
                 unexploredPositions = new Queue<MatrixPosition>();
                 DoNextLabyrinth();
 
-                helper.ConsoleMio.WriteLine("Labyrinth After: ", ConsoleColor.DarkGreen);
+                Helper.WriteLine("Labyrinth After: ", ConsoleColor.DarkGreen);
                 PrintLabyrinth(maze);
                 Console.WriteLine();
 
-                helper.ConsoleMio.WriteLine("Press a key to test the next labyrinth...", ConsoleColor.DarkRed);
+                Helper.WriteLine("Press a key to test the next labyrinth...", ConsoleColor.DarkRed);
                 Console.ReadKey(true);
                 Console.Clear();
             }
 
-            helper.ConsoleMio.WriteLine(
+            Helper.WriteLine(
                 "Completed!!!",
                 ConsoleColor.DarkGreen);
         }
@@ -69,10 +70,10 @@
 
             ExploreMaze(unexploredPositions.Dequeue());
 
-            MarkUnreachedPlaeces(maze, "0", "u");
+            MarkUnreachedPlaces(maze, "0", "u");
         }
 
-        private static void MarkUnreachedPlaeces(string[,] maze, string unreachedPlaceToken, string markToken)
+        private static void MarkUnreachedPlaces(string[,] maze, string unreachedPlaceToken, string markToken)
         {
             for (int i = 0; i < maze.GetLength(0); i++)
             {
@@ -88,8 +89,6 @@
 
         private static void PrintLabyrinth(string[,] maze)
         {
-            int parseResult;
-
             for (int i = 0; i < maze.GetLength(0); i++)
             {
                 for (int j = 0; j < maze.GetLength(1); j++)
@@ -98,16 +97,20 @@
 
                     if (current.Equals("x", StringComparison.OrdinalIgnoreCase))
                     {
-                        helper.ConsoleMio.Write("x ", ConsoleColor.Red);
-                    }
-                    else if (!current.Equals("0") &&
-                             int.TryParse(current, out parseResult))
-                    {
-                        helper.ConsoleMio.Write("{0} ", ConsoleColor.Green, current);
+                        Helper.Write("x ", ConsoleColor.Red);
                     }
                     else
                     {
-                        Console.Write("{0} ", current);
+                        int parseResult;
+                        if (!current.Equals("0") &&
+                            int.TryParse(current, out parseResult))
+                        {
+                            Helper.Write($"{current} ", ConsoleColor.Green);
+                        }
+                        else
+                        {
+                            Console.Write("{0} ", current);
+                        }
                     }
                 }
 

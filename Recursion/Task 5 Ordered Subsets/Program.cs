@@ -1,6 +1,6 @@
 ﻿namespace OrderedSubsets
 {
-    using HomeworkHelpers;
+    using ConsoleMio.ConsoleEnhancements;
     using ProblemSolvers;
 
     /// <summary>
@@ -9,19 +9,19 @@
     /// </summary>
     public class Program
     {
-        private static readonly HomeworkHelper Helper = new HomeworkHelper();
+        private static readonly ConsoleMio Console = new ConsoleMio();
 
         private static void Main()
         {
-            Helper.ConsoleMio.Setup();
+            Console.Setup();
 
-            Helper.ConsoleMio.PrintHeading("Task 5 Print Ordered Subsets of K from Set of N");
+            Console.PrintHeading("Task 5 Print Ordered Subsets of K from Set of N");
 
             string[] mainSet = { "hi", "a", "b" };
 
             int subsetLength = 2;
 
-            var printer = new ResultPrinter(Helper.ConsoleMio);
+            var printer = new ResultPrinter(Console);
 
             CombinatoricsGen<string> combo = new PermutationsWithRepetition<string>(subsetLength, mainSet);
 

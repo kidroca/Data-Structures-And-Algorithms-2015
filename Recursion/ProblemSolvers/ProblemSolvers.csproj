@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Helpers">
-      <HintPath>..\Helpers\Helpers.dll</HintPath>
+    <Reference Include="ConsoleMio, Version=1.0.6021.35514, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ConsoleMio.1.0.6021.35514\lib\net40\ConsoleMio.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,6 +51,9 @@
     <Compile Include="PermutationWithRepetition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultPrinter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

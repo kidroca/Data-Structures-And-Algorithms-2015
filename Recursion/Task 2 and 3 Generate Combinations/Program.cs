@@ -1,6 +1,6 @@
 ﻿namespace CombinationGeneration
 {
-    using HomeworkHelpers;
+    using ConsoleMio.ConsoleEnhancements;
     using ProblemSolvers;
 
     /// <summary>
@@ -11,23 +11,23 @@
     /// </summary>
     public class Program
     {
-        private static readonly HomeworkHelper Helper = new HomeworkHelper();
+        private static readonly ConsoleMio Console = new ConsoleMio();
 
         private static void Main()
         {
-            Helper.ConsoleMio.Setup();
-            Helper.ConsoleMio.PrintHeading("Task 2 Generate All Combinations With Duplicates");
+            Console.Setup();
+            Console.PrintHeading("Task 2 Generate All Combinations With Duplicates");
 
             int[] collection = { 1, 2, 3, 4, 5 };
             int combinationSetsLength = 2;
             CombinatoricsGen<int> combo =
                 new CombinatoricsesWithDuplicates<int>(combinationSetsLength, collection);
 
-            var resultPrinter = new ResultPrinter(Helper.ConsoleMio);
+            var resultPrinter = new ResultPrinter(Console);
 
             resultPrinter.DispalyResults(collection, combinationSetsLength, combo);
 
-            Helper.ConsoleMio.PrintHeading("Task 3 Generate All Regular Combinations");
+            Console.PrintHeading("Task 3 Generate All Regular Combinations");
 
             combo = new CombinatoricsesRegular<int>(combinationSetsLength, collection);
 
