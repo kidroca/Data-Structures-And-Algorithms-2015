@@ -25,26 +25,27 @@
         [TestMethod]
         public void LinearSearchShouldWorkCorrectly()
         {
-            Assert.IsTrue(this.testDatesCollection.LinearSearch(new DateTime(2001, 1, 1)));
-            Assert.IsTrue(this.testDatesCollection.LinearSearch(new DateTime(2009, 1, 1)));
+            Assert.AreEqual(12, this.testDatesCollection.LinearSearch(new DateTime(2001, 1, 1)));
 
-            Assert.IsTrue(this.testDatesCollection.BinarySearch(new DateTime(2005, 3, 1)));
+            Assert.AreEqual((9 * 12), this.testDatesCollection.LinearSearch(new DateTime(2009, 1, 1)));
 
-            Assert.IsFalse(this.testDatesCollection.LinearSearch(new DateTime(1999, 1, 1)));
-            Assert.IsFalse(this.testDatesCollection.BinarySearch(new DateTime(2013, 1, 1)));
+            Assert.AreEqual((5 * 12) + 2, this.testDatesCollection.BinarySearch(new DateTime(2005, 3, 1)));
+
+            Assert.AreEqual(-1, this.testDatesCollection.LinearSearch(new DateTime(1999, 1, 1)));
+            Assert.AreEqual(-1, this.testDatesCollection.BinarySearch(new DateTime(2013, 1, 1)));
         }
 
         [TestMethod]
         public void BinarySearchShouldWorkCorrectly()
         {
-            Assert.IsTrue(this.testDatesCollection.BinarySearch(new DateTime(2001, 1, 1)));
-            Assert.IsTrue(this.testDatesCollection.BinarySearch(new DateTime(2009, 1, 1)));
+            Assert.AreEqual(12, this.testDatesCollection.BinarySearch(new DateTime(2001, 1, 1)));
+            Assert.AreEqual((9 * 12), this.testDatesCollection.BinarySearch(new DateTime(2009, 1, 1)));
 
-            Assert.IsTrue(this.testDatesCollection.BinarySearch(new DateTime(2005, 3, 1)));
-            Assert.IsTrue(this.testDatesCollection.BinarySearch(new DateTime(2004, 5, 1)));
+            Assert.AreEqual((5 * 12) + 2, this.testDatesCollection.BinarySearch(new DateTime(2005, 3, 1)));
+            Assert.AreEqual((4 * 12) + 4, this.testDatesCollection.BinarySearch(new DateTime(2004, 5, 1)));
 
-            Assert.IsFalse(this.testDatesCollection.BinarySearch(new DateTime(1999, 1, 1)));
-            Assert.IsFalse(this.testDatesCollection.BinarySearch(new DateTime(2013, 1, 1)));
+            Assert.AreEqual(-1, this.testDatesCollection.BinarySearch(new DateTime(1999, 1, 1)));
+            Assert.AreEqual(-1, this.testDatesCollection.BinarySearch(new DateTime(2013, 1, 1)));
         }
     }
 }

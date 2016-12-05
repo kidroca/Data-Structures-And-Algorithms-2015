@@ -1,7 +1,8 @@
-﻿namespace SortingHomework
+﻿namespace SortingHomework.Sorters
 {
     using System;
     using System.Collections.Generic;
+    using Interfaces;
 
     public class Quicksorter<T> : ISorter<T> where T : IComparable<T>
     {
@@ -17,9 +18,9 @@
                 return;
             }
 
-            int boundryIndex = this.Partition(collection, left, right);
-            this.QuickSort(collection, left, boundryIndex - 1);
-            this.QuickSort(collection, boundryIndex + 1, right);
+            int boundaryIndex = this.Partition(collection, left, right);
+            this.QuickSort(collection, left, boundaryIndex - 1);
+            this.QuickSort(collection, boundaryIndex + 1, right);
         }
 
         private int Partition(IList<T> collection, int left, int right)

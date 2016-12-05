@@ -1,6 +1,7 @@
 ﻿namespace SortingHomework
 {
     using System;
+    using Sorters;
 
     internal class Program
     {
@@ -13,6 +14,12 @@
 
             Console.WriteLine("SelectionSorter result:");
             collection.Sort(new SelectionSorter<int>());
+            collection.PrintAllItemsOnConsole();
+            Console.WriteLine();
+
+            collection = new SortableCollection<int>(new[] { 22, 11, 101, 33, 0, 101 });
+            Console.WriteLine("InsertionSorter result:");
+            collection.Sort(new InsertionSorter<int>());
             collection.PrintAllItemsOnConsole();
             Console.WriteLine();
 
@@ -36,16 +43,14 @@
             Console.WriteLine(collection.BinarySearch(101));
             Console.WriteLine();
 
-            // Shuffle Ama No Shuffle
-            // Sorry no time to implement, other homeworks on the priority queue
-            //Console.WriteLine("Shuffle:");
-            //collection.Shuffle();
-            //collection.PrintAllItemsOnConsole();
-            //Console.WriteLine();
+            Console.WriteLine("Shuffle:");
+            collection.Shuffle();
+            collection.PrintAllItemsOnConsole();
+            Console.WriteLine();
 
-            //Console.WriteLine("Shuffle again:");
-            //collection.Shuffle();
-            //collection.PrintAllItemsOnConsole();
+            Console.WriteLine("Shuffle again:");
+            collection.Shuffle();
+            collection.PrintAllItemsOnConsole();
         }
     }
 }

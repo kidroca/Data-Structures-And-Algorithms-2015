@@ -1,12 +1,13 @@
 ﻿namespace SortingHomework.Tests.Sorting
 {
     using System;
+    using Interfaces;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public abstract class SortingsTestsBase<T> where T : IComparable<T>
     {
-        protected T[] collection;
+        protected T[] Collection;
         protected ISorter<T> sorty;
 
         [TestInitialize]
@@ -15,9 +16,9 @@
         [TestMethod]
         public void SortingShouldProduceSortedCollectionInAscendingOrder()
         {
-            this.sorty.Sort(collection);
+            this.sorty.Sort(this.Collection);
 
-            Assert.IsTrue(this.IsSortedAscending(collection), "The collection is not sorted in ascending order");
+            Assert.IsTrue(this.IsSortedAscending(this.Collection), "The Collection is not sorted in ascending order");
         }
 
         private bool IsSortedAscending(T[] collection)

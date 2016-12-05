@@ -2,28 +2,26 @@
 {
     using System;
     using System.Collections.Generic;
+    using Interfaces;
 
-    public class SortableCollection<T> where T : IComparable<T>
+    public class SortableCollection<T> : ISortableCollection<T> where T : IComparable<T>
     {
         private readonly IList<T> items;
 
+        private readonly Random rnd;
+
         public SortableCollection()
+            : this(new T[0])
         {
-            this.items = new List<T>();
         }
 
         public SortableCollection(IEnumerable<T> items)
         {
+            this.rnd = new Random();
             this.items = new List<T>(items);
         }
 
-        public IList<T> Items
-        {
-            get
-            {
-                return this.items;
-            }
-        }
+        public IList<T> Items => this.items;
 
         public void Add(T item)
         {
@@ -40,20 +38,20 @@
             sorter.Sort(this.items);
         }
 
-        public bool LinearSearch(T item)
+        public int LinearSearch(T item)
         {
-            foreach (var element in this.Items)
+            for (int i = 0; i < this.Items.Count; i++)
             {
-                if (element.CompareTo(item) == 0)
+                if (this.Items[i].CompareTo(item) == 0)
                 {
-                    return true;
+                    return i;
                 }
             }
 
-            return false;
+            return -1;
         }
 
-        public bool BinarySearch(T item)
+        public int BinarySearch(T item)
         {
             int left = 0,
                 right = this.Items.Count - 1;
@@ -64,7 +62,7 @@
 
                 if (this.Items[index].CompareTo(item) == 0)
                 {
-                    return true;
+                    return index;
                 }
                 else if (this.Items[index].CompareTo(item) > 0)
                 {
@@ -76,12 +74,16 @@
                 }
             }
 
-            return false;
+            return -1;
         }
 
         public void Shuffle()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < this.Items.Count - 1; i++)
+            {
+                var nextRandom = this.rnd.Next(i + 1, this.Items.Count);
+                this.Items.SwapIndexes(i, nextRandom);
+            }
         }
 
         public void PrintAllItemsOnConsole()

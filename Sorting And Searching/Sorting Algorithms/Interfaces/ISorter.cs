@@ -1,4 +1,4 @@
-﻿namespace SortingHomework
+﻿namespace SortingHomework.Interfaces
 {
     using System;
     using System.Collections.Generic;
