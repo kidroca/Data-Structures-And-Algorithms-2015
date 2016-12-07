@@ -6,53 +6,56 @@
 
     public class Quicksorter<T> : ISorter<T> where T : IComparable<T>
     {
-        public void Sort(IList<T> collection)
+        private IList<T> collection;
+
+        public void Sort(IList<T> collectionToSort)
         {
-            this.QuickSort(collection, 0, collection.Count - 1);
+            this.collection = collectionToSort;
+            this.QuickSort(0, collectionToSort.Count - 1);
         }
 
-        private void QuickSort(IList<T> collection, int left, int right)
+        private void QuickSort(int left, int right)
         {
             if (left >= right)
             {
                 return;
             }
 
-            int boundaryIndex = this.Partition(collection, left, right);
-            this.QuickSort(collection, left, boundaryIndex - 1);
-            this.QuickSort(collection, boundaryIndex + 1, right);
+            int boundaryIndex = this.Partition(left, right);
+            this.QuickSort(left, boundaryIndex - 1);
+            this.QuickSort(boundaryIndex + 1, right);
         }
 
-        private int Partition(IList<T> collection, int left, int right)
+        private int Partition(int left, int right)
         {
             int middle = (left + right) / 2;
-            collection.SwapIndexes(left, middle);
+            this.collection.SwapIndexes(left, middle);
 
-            T pivot = collection[left];
+            T pivot = this.collection[left];
 
             int low = left + 1,
                 high = right;
             while (low <= high)
             {
-                while (collection[high].CompareTo(pivot) > 0)
+                while (this.collection[high].CompareTo(pivot) > 0)
                 {
                     high--;
                 }
 
-                while (low <= high && collection[low].CompareTo(pivot) <= 0)
+                while (low <= high && this.collection[low].CompareTo(pivot) <= 0)
                 {
                     low++;
                 }
 
                 if (low <= high)
                 {
-                    collection.SwapIndexes(low, high);
+                    this.collection.SwapIndexes(low, high);
                     low++;
                     high--;
                 }
             }
 
-            collection.SwapIndexes(left, high);
+            this.collection.SwapIndexes(left, high);
             return high;
         }
     }
