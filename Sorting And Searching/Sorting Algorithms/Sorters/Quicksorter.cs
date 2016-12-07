@@ -2,13 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
-    using Interfaces;
 
-    public class Quicksorter<T> : ISorter<T> where T : IComparable<T>
+    public class Quicksorter<T> : SortingBase<T> where T : IComparable<T>
     {
         private IList<T> collection;
 
-        public void Sort(IList<T> collectionToSort)
+        public override void Sort(IList<T> collectionToSort)
         {
             this.collection = collectionToSort;
             this.QuickSort(0, collectionToSort.Count - 1);
@@ -28,8 +27,8 @@
 
         private int Partition(int left, int right)
         {
-            int middle = (left + right) / 2;
-            this.collection.SwapIndexes(left, middle);
+            int pivotIndex = this.FindPivot(left, right);
+            this.collection.SwapIndexes(left, pivotIndex);
 
             T pivot = this.collection[left];
 
@@ -57,6 +56,43 @@
 
             this.collection.SwapIndexes(left, high);
             return high;
+        }
+
+        private int FindPivot(int left, int right)
+        {
+            int middle = (left + right) / 2;
+
+            if (IsGreater(this.collection[right], this.collection[middle]))
+            {
+                if (IsGreater(this.collection[middle], this.collection[left]))
+                {
+                    return middle;
+                }
+                else if (IsGreater(this.collection[left], this.collection[right]))
+                {
+                    return right;
+                }
+                else
+                {
+                    return left;
+                }
+            }
+            else
+            {
+                if (IsGreater(this.collection[right], this.collection[left]))
+                {
+                    return right;
+                }
+                else if (IsGreater(this.collection[middle], this.collection[left]))
+                {
+                    return middle;
+                }
+                else
+                {
+                    return left;
+                }
+            }
+
         }
     }
 }
