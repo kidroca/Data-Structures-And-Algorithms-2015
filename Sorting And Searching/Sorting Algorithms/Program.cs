@@ -24,6 +24,12 @@
             Console.WriteLine();
 
             collection = new SortableCollection<int>(new[] { 22, 11, 101, 33, 0, 101 });
+            Console.WriteLine("BubbleSorter result:");
+            collection.Sort(new BubbleSorter<int>());
+            collection.PrintAllItemsOnConsole();
+            Console.WriteLine();
+
+            collection = new SortableCollection<int>(new[] { 22, 11, 101, 33, 0, 101 });
             Console.WriteLine("Quicksorter result:");
             collection.Sort(new Quicksorter<int>());
             collection.PrintAllItemsOnConsole();
